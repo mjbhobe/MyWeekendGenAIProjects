@@ -9,8 +9,8 @@ This is a quick utility program that helps me do just that. It's coded with a si
 
 ### Setup
 
-* To run this app, you should install the Python modules listed in `requirements.txt` file in the application folder. <br/>For this application, I have used YouTube Transcript API to transcribe the video. 
-* I have used Google Gemini as my LLM (because the transcript can be long, depending on video, and because Gemini API is still free 😀🤞).<br/> I have used `gemini-1.5-flash` as the LLM, but `gemini-2.0-flash` should work too - try it out! You'll also need an API key to use Gemini API. Head on over to [Google AI Studio](https://aistudio.google.com/app/apikey?_gl=1*1veje4l*_ga*MTQyMjk5NjM3NC4xNzM4NTY1NTg4*_ga_P1DBVKWT6V*MTczOTI0ODgyMy41LjAuMTczOTI0ODgyMy42MC4wLjEzNDM3OTY5ODE.), create an API key and paste it into a local `.env` file with a GOOGLE_API_KEY key, like so <br/>
+* To run this app, you should install the Python modules listed in `requirements.txt` file in the application folder. <br/>For this application, I have used **YouTube Transcript API** to transcribe the video. 
+* I have used Google Gemini as my LLM because the transcript can be long depending on video (here's where Gemini's 1 Mn Context window helps!), and because Gemini API is still free 😀🤞.<br/> I have used `gemini-1.5-flash` as the LLM, but `gemini-2.0-flash` should work too - try it out!<br/> You'll also need an API key to use Gemini API. Head on over to [Google AI Studio](https://aistudio.google.com/app/apikey?_gl=1*1veje4l*_ga*MTQyMjk5NjM3NC4xNzM4NTY1NTg4*_ga_P1DBVKWT6V*MTczOTI0ODgyMy41LjAuMTczOTI0ODgyMy42MC4wLjEzNDM3OTY5ODE.), create an API key and paste it into a local `.env` file with a GOOGLE_API_KEY key, like so <br/>
 `GOOGLE_API_KEY=<Your_API_key from Google AI Studio website>`
 
 ### Running the app

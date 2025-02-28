@@ -1,0 +1,13 @@
+groq
+agno
+yfinance
+duckduckgo-search
+newspaper4k
+lxml_html_clean
+udocker
+sentence-transformers
+sqlalchemy
+psycopg2[binary]
+pgvector
+pypdf
+python-dotenv

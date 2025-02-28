@@ -1,0 +1,11 @@
+# python packages needed
+python-dotenv
+streamlit
+sqlalchemy
+psycopg2-binary
+
+# LLM APIs
+google-generativeai
+
+# for vanna text-2-sql
+vanna[chromadb,gemini,postgres]
