@@ -3,9 +3,21 @@ python-dotenv
 streamlit
 sqlalchemy
 psycopg2-binary
+sqlalchemy
+pandas
+plotly
+langchain
+faiss-cpu
+pypdf
+pdfminer.six
 
 # LLM APIs
 google-generativeai
+openai
+
+# orchesration platform
+langchain-community
 
 # for vanna text-2-sql
 vanna[chromadb,gemini,postgres]
+
