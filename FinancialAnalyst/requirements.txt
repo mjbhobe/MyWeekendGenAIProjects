@@ -1,14 +1,18 @@
-groq
-agno
-yfinance
-duckduckgo-search
-newspaper4k
-lxml_html_clean
-udocker
-sentence-transformers
-sqlalchemy
-psycopg2[binary]
-pgvector
-pypdf
+# python packages needed
 python-dotenv
+streamlit
+yfinance
+rich
 pyyaml
+tabulate
+
+# LLM APIs
+google-generativeai>=0.3.0
+
+# llama-index
+llama-index
+llama-index-llms-gemini
+llama-index-llms-groq
+
+
+

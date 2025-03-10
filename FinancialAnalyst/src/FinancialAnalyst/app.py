@@ -167,38 +167,158 @@ def main():
         # ---- Efficiency Ratios --------------------------
         efficiency_ratios_title = f"### Efficiency Ratios:"
         st.markdown(efficiency_ratios_title)
+        report += efficiency_ratios_title + NL2
+
         efficiency_ratios = fira.efficiency_ratios(ticker_symbol)
         st.dataframe(efficiency_ratios)
+        report += efficiency_ratios.to_markdown() + NL2
 
-        # TODO: ask LLM to analyze efficiency ratios & print summary
+        # LLM analysis of efficiency ratios
+
+        # build the chat prompt (prompts text defined in config/prompts.yaml file)
+        efficiency_ratios_messages = [
+            ChatMessage(
+                role=MessageRole.SYSTEM,
+                content=config["prompts"]["system_prompt"],
+            ),
+            ChatMessage(
+                role=MessageRole.USER,
+                content=config["prompts"]["efficiency_ratios_analysis_prompt"],
+            ),
+        ]
+        efficiency_ratios_template = ChatPromptTemplate(
+            efficiency_ratios_messages
+        )
+        prompt = efficiency_ratios_template.format(
+            company_name=ticker.info["longName"],
+            efficiency_ratios_table=efficiency_ratios.to_markdown(),
+        )
+        response = llm.complete(prompt)
+        st.markdown(str(response))
+        report += str(response) + NL2
 
         # ---- Valuation Ratios --------------------------
         valuation_ratios_title = f"### Valuation Ratios:"
         st.markdown(valuation_ratios_title)
+        report += valuation_ratios_title + NL2
+
         valuation_ratios = fira.valuation_ratios(ticker_symbol)
         st.dataframe(valuation_ratios)
+        report += valuation_ratios.to_markdown() + NL2
 
-        # TODO: ask LLM to analyze valuation ratios & print summary
+        # LLM analysis of valuation ratios
+
+        # build the chat prompt (prompts text defined in config/prompts.yaml file)
+        valuation_ratios_messages = [
+            ChatMessage(
+                role=MessageRole.SYSTEM,
+                content=config["prompts"]["system_prompt"],
+            ),
+            ChatMessage(
+                role=MessageRole.USER,
+                content=config["prompts"]["valuation_ratios_analysis_prompt"],
+            ),
+        ]
+        valuation_ratios_template = ChatPromptTemplate(
+            valuation_ratios_messages
+        )
+        prompt = valuation_ratios_template.format(
+            company_name=ticker.info["longName"],
+            valuation_ratios_table=valuation_ratios.to_markdown(),
+        )
+        response = llm.complete(prompt)
+        st.markdown(str(response))
+        report += str(response) + NL2
 
         # ---- Leverage Ratios --------------------------
         leverage_ratios_title = f"### Leverage Ratios:"
         st.markdown(leverage_ratios_title)
+        report += leverage_ratios_title + NL2
+
         leverage_ratios = fira.leverage_ratios(ticker_symbol)
         st.dataframe(leverage_ratios)
+        report += leverage_ratios.to_markdown() + NL2
 
-        # TODO: ask LLM to analyze leverage ratios & print summary
+        # LLM analysis of leverage ratios
+
+        # build the chat prompt (prompts text defined in config/prompts.yaml file)
+        leverage_ratios_messages = [
+            ChatMessage(
+                role=MessageRole.SYSTEM,
+                content=config["prompts"]["system_prompt"],
+            ),
+            ChatMessage(
+                role=MessageRole.USER,
+                content=config["prompts"]["leverage_ratios_analysis_prompt"],
+            ),
+        ]
+        leverage_ratios_template = ChatPromptTemplate(
+            leverage_ratios_messages
+        )
+        prompt = leverage_ratios_template.format(
+            company_name=ticker.info["longName"],
+            leverage_ratios_table=leverage_ratios.to_markdown(),
+        )
+        response = llm.complete(prompt)
+        st.markdown(str(response))
+        report += str(response) + NL2
 
         # ---- Performance & Growth Metrics --------------------------
         performance_and_growth_metrics_title = f"### Performance & Growth Metrics:"
         st.markdown(performance_and_growth_metrics_title)
+        report += performance_and_growth_metrics_title + NL2
+
         performance_and_growth_metrics = fira.performance_and_growth_metrics(
             ticker_symbol
         )
         st.dataframe(performance_and_growth_metrics)
+        report += performance_and_growth_metrics.to_markdown() + NL2
 
-        # TODO: ask LLM to analyze performance & growth metrics & print summary
+        # LLM analysis of performance_and_growth ratios
 
-        # TODO: based on the analysis so far, ask the LLM for an overall recommendation
+        # build the chat prompt (prompts text defined in config/prompts.yaml file)
+        performance_and_growth_metrics_messages = [
+            ChatMessage(
+                role=MessageRole.SYSTEM,
+                content=config["prompts"]["system_prompt"],
+            ),
+            ChatMessage(
+                role=MessageRole.USER,
+                content=config["prompts"]["performance_and_growth_metrics_prompt"],
+            ),
+        ]
+        performance_and_growth_metrics_template = ChatPromptTemplate(
+            performance_and_growth_metrics_messages
+        )
+        prompt = performance_and_growth_metrics_template.format(
+            company_name=ticker.info["longName"],
+            performance_and_growth_ratios_table=performance_and_growth_metrics.to_markdown(),
+        )
+        response = llm.complete(prompt)
+        st.markdown(str(response))
+        report += str(response) + NL2
+
+        # --------------- FINAL RECOMMENDATION from LLM ---------------------------
+        final_recommendation_messages = [
+            ChatMessage(
+                role=MessageRole.SYSTEM,
+                content=config["prompts"]["system_prompt"],
+            ),
+            ChatMessage(
+                role=MessageRole.USER,
+                content=config["prompts"]["overall_assessment_prompt"],
+            ),
+        ]
+        final_recommendation_template = ChatPromptTemplate(
+            final_recommendation_messages
+        )
+        prompt = final_recommendation_template.format(
+            company_name=ticker.info["longName"],
+            performance_and_assessment=report,
+        )
+        response = llm.complete(prompt)
+        st.markdown(str(response))
+        report += str(response) + NL2
 
         # write the report to file
         if report != "":

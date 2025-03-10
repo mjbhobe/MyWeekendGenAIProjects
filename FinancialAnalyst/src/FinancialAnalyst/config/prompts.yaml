@@ -38,7 +38,75 @@ prompts:
     Return your response in markdown format. Title of the assessment should just be 
     "#### Assessment of Profitability Ratios", followed by your overall assessment, followed by 
     your reasons as a bulleted list.    
-  
-
-
-  
+  efficiency_ratios_analysis_prompt: >
+    The table listed below are calculations for efficiency ratios for {company_name},
+    calculated at the financial-year-end date. The data is organized in a table, sorted
+    by the first column, which is the financial-year-end date. Each efficiency ratio
+    appears in a column of it's own, with appropriate column heading.
+    \n------------------------\n
+    {efficiency_ratios_table}
+    \n------------------------\n
+    Given the above information, review the trend for each efficiency ratio and provide
+    your overall assessment of the operational efficiency of {company_name}. Call out the
+    reasons for your assessments (could be multiple).
+    Return your response in markdown format. Title of the assessment should just be 
+    "#### Assessment of Efficiency Ratios", followed by your overall assessment, followed by 
+    your reasons as a bulleted list. 
+  valuation_ratios_analysis_prompt: >
+    The table listed below are calculations for valuation ratios for {company_name},
+    calculated at the financial-year-end date. The data is organized in a table, sorted
+    by the first column, which is the financial-year-end date. Each valuation ratio
+    appears in a column of it's own, with appropriate column heading.
+    \n------------------------\n
+    {valuation_ratios_table}
+    \n------------------------\n
+    Given the above information, review the trend for each valuation ratio and provide
+    your overall assessment of the stock price fairness of {company_name}. Call out the
+    reasons for your assessments (could be multiple).
+    Return your response in markdown format. Title of the assessment should just be 
+    "#### Assessment of Valuation Ratios", followed by your overall assessment, followed by 
+    your reasons as a bulleted list. 
+  leverage_ratios_analysis_prompt: >
+    The table listed below are calculations for leverage ratios for {company_name},
+    calculated at the financial-year-end date. The data is organized in a table, sorted
+    by the first column, which is the financial-year-end date. Each leverage ratio
+    appears in a column of it's own, with appropriate column heading.
+    \n------------------------\n
+    {leverage_ratios_table}
+    \n------------------------\n
+    Given the above information, review the trend for each leverage ratio and provide
+    your overall assessment of the stock price fairness of {company_name}. Call out the
+    reasons for your assessments (could be multiple).
+    Return your response in markdown format. Title of the assessment should just be 
+    "#### Assessment of Leverage Ratios", followed by your overall assessment, followed by 
+    your reasons as a bulleted list. 
+  performance_and_growth_metrics_prompt: >
+    The table listed below are calculations for the performance & growth metrics for {company_name},
+    calculated at the financial-year-end date. The data is organized in a table, sorted
+    by the first column, which is the financial-year-end date. Each performance & growth metric
+    appears in a column of it's own, with appropriate column heading.
+    \n------------------------\n
+    {performance_and_growth_ratios_table}
+    \n------------------------\n
+    Given the above information, review the trend for each performace & growth metric and provide
+    your overall assessment of the business growth, profitability, earnings potential, financial 
+    stability, and cash flow generation potential of {company_name}. Call out the
+    reasons for your assessments (could be multiple).
+    Return your response in markdown format. Title of the assessment should just be 
+    "#### Assessment of Performance & Growth Metrics", followed by your overall assessment, followed by 
+    your reasons as a bulleted list. 
+  overall_assessment_prompt:
+    Below is provided calculatios of various performance metrics and your assessments of the same
+    for {company_name} from your previous responses.
+    \n------------------------\n
+    {performance_and_assessment}
+    \n------------------------\n    
+    Given the above information, give your overall recommendation for the investment potential of 
+    {company_name} that can be suggested to a potential HNI or pensioner. They want to know if {company_name} 
+    has a good long term investment potential or should be avoided. If they are already invested, if they should
+    continue holding or should they exit now. Give reasons for your recommendation (could be multiple).
+    Realize that they are dependent on you - an astute financial advisor - for the recommendation, so be very 
+    thorough with your analysis and very detailed with your recommendation & reasons for the same.
+    Return your response in markdown format. Title of the assessment should just be 
+    "#### Overall Recommendation for {company_name}", followed by your overall assessment, followed by 
+    your reasons as a bulleted list.    
