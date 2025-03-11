@@ -321,7 +321,8 @@ def performance_and_growth_metrics(ticker_symbol: str) -> pd.DataFrame:
         - Debt to Equity (D/E) = Total Debt / Total Shareholders' Equity
         - Free Cash Flow = Operating Cash Flow - Capital Expenditure
 
-    Revenue & growth metrics are intended to measure business growth, profitability, earnings potential, financial stability, and cash flow generation of a company.
+    Revenue & growth metrics are intended to measure business growth, profitability, earnings potential, 
+    financial stability, and cash flow generation of a company.
     These can be interpreted as follows (though the interpretation could differ person-to-person)
         - Revenue Growth (%) - measures revenue growth across years. >10% is strong growth,
             5-10% is moderate growth, <5% is slow growth, and negative is revenue decline (avoid!)

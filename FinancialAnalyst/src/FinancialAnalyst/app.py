@@ -56,19 +56,13 @@ if config is None:
         f"FATAL ERROR: unable to read from configuration file at {config_file_path}"
     )
 
-# show some prompts
-# print("System Prompt")
-# print(config["prompts"]["system_prompt"])
-# print("Liquidity Ratios Analysis Prompt")
-# print(config["prompts"]["liquidity_ratios_analysis_prompt"])
-
-
 def main():
 
     NL2 = "\n\n"
     report: str = ""
 
-    st.title("Financial Analysis of a company with LlamaIndex 🦙 and Google Gemini ♊")
+    st.title("Financial Analysis of a Company Stock")
+    st.markdown("### With LlamaIndex 🦙 and Google Gemini ♊")
     ticker_symbol = st.text_input(
         "Enter the Company Ticker as used by Yahoo! Finance (e.g AAPL, PERSISTENT.NS):"
     )
