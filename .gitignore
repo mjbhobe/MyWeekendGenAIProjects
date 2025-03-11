@@ -3,6 +3,7 @@ GMailSummarizer/
 CompanyAnalyser/
 CompanyAnalyzerAgentic/
 Text2SQL/
+experiments/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -19,7 +19,7 @@ Python 3.10, installed in a local environment.
 ### List of Projects 
 Here is a list of projects (created so far) - this list will grow over time:
 1. [You Tube Video Transcriber 📽️💬](YouTubeVideoTranscriber/README.md) - transcribes and summarized a YouTube Video, given a URL.
-2. [Financial Analysis of Company Stock ](FinancialAnalyst/README.ms) - given a stock symbol (such as MSFT or RELIANCE.NS), does a comprehensive analysis of Financial ratios and gives an overall analysis of the company performance.
+2. [Financial Analysis of Company Stock](FinancialAnalyst/README.ms) - given a stock symbol (such as MSFT or RELIANCE.NS), does a comprehensive analysis of Financial ratios and gives an overall analysis of the company performance.
 
 << More apps on the way - keep watching this repo>>
 

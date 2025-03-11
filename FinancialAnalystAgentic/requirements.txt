@@ -8,12 +8,14 @@ pyyaml
 tabulate
 
 # LLM APIs
-google-generativeai>=0.3.0
+google-genai
 
-# llama-index
-llama-index
-llama-index-llms-gemini
-llama-index-llms-groq
+# agno & dependencies
+agno
+lancedb 
+tantivy 
+pypdf 
+duckduckgo-search
 
 
 
