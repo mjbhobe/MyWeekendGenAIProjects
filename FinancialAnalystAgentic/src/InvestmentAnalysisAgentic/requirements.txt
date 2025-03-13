@@ -1,0 +1,9 @@
+yfinance
+sec-edgar-downloader
+pandas
+numpy
+requests
+bs4
+textblob
+PyPDF2
+streamlit

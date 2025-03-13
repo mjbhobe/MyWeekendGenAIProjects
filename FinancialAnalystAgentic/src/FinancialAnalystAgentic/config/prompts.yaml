@@ -11,7 +11,7 @@ prompts:
     you. This data could be structured on unstructured.
     Always answer based on the context provided to you.
   financial_analysis_prompt: >
-    - Use the financial analysis tools at your disposal to calculate the
+    - Use the financial analysis tools at your disposal to fetch company information and calculate the
       liquidity ratios, profitability ratios, efficiency ratios, vauation ratios,
       leverage ratios and performance and growth metrics for the stock symbol provided
     - Dispay the financial ratios as tables. Data in each table will be sorted by date
@@ -57,7 +57,38 @@ prompts:
       Return your response in markdown format. Title of the assessment should just be "#### Overall Recommendation 
       for the company", followed by your overall assessment, followed by your reasons as a bulleted list.
   expected_output_format: >
-    TODO
+    A professional financial analysis report in markdown format:
+
+    # Financial Analysis for {company long name}
+    {Company's Business Summary}
+
+    ## Financial Ratio Analysis
+    ### Liquidity Ratios
+    {Liquidity ratios calculation table}
+    {Your analysis of Liquidity Ratios}
+
+    ### Profitability Ratios
+    {Profitability ratios calculation table}
+    {Your analysis of Profitability Ratios}
+
+    ### Efficiency Ratios
+    {Efficiency ratios calculation table}
+    {Your analysis of Efficiency Ratios}
+
+    ### Valuation Ratios
+    {Valuation ratios calculation table}
+    {Your analysis of Valuation Ratios}
+
+    ### Leverage Ratios
+    {Leverage ratios calculation table}
+    {Your analysis of Leverage Ratios}    
+
+    ### Performance and Growth Metrics
+    {Performance and Growth Metrics calculation table}
+    {Your analysis of Performance and Growth Metrics}  
+
+    ## Overall Analysis
+    {your overall analysis from all the information presented above}
   liquidity_ratios_analysis_prompt: >
     The table listed below are calculations for liquidity ratios for {company_name},
     calculated at the financial-year-end date. The data is organized in a table, sorted
