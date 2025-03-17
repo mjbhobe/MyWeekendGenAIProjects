@@ -6,9 +6,12 @@ yfinance
 rich
 pyyaml
 tabulate
+bs4
+textblob
 
 # LLM APIs
 google-genai
+google-generativeai
 
 # agno & dependencies
 agno

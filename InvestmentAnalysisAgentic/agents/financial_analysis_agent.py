@@ -30,23 +30,11 @@ if os.environ.get("STREAMLIT_CLOUD"):
     # when deploying to streamlit, read from st.secrets
     os.environ["GOOGLE_API_KEY"] = st.secrets("GOOGLE_API_KEY")
 else:
-<<<<<<< HEAD
     # running locally - load from .env file
     load_dotenv()
     genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 config_file_path = pathlib.Path(__file__).parent.parent / "config/financial_analysis_prompts.yaml"
-=======
-    load_dotenv()
-    genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
-
-
-# # load API keys from .env file
-# load_dotenv()
-# genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
-
-config_file_path = pathlib.Path(__file__).parent.parent / "config/prompts.yaml"
->>>>>>> a2a5a7134cc5766c7b833b0549db1ab03442517a
 assert (
     config_file_path.exists()
 ), f"FATAL ERROR: configuration file {config_file_path} does not exist!"
