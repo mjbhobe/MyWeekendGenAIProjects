@@ -1,7 +1,7 @@
 import streamlit as st
-
 from agno.agent import RunResponse
 from agents.financial_analysis_agent import fa_agent
+from PIL import Image  # For image handling
 
 # Page configuration
 st.set_page_config(
@@ -13,25 +13,23 @@ st.markdown(
     """
     <style>
     .stApp {
-        max-width: 1200px;
-        margin: 0 auto;
+        max-width: 100%; /* Take full width */
     }
     .main-header {
         text-align: center;
         padding: 2rem 0;
     }
-    .stock-input {
-        max-width: 400px;
-        margin: 0 auto;
+    .sidebar .sidebar-content {
+        background-color: #f0f8ff; /* Light background for sidebar */
+    }
+    .full-width-output {
+        width: 100%;
+        padding: 2rem;
     }
     </style>
-""",
+    """,
     unsafe_allow_html=True,
 )
-
-# Initialize session state
-if "analysis_generated" not in st.session_state:
-    st.session_state.analysis_generated = False
 
 
 def generate_financial_analysis(symbol: str, agent):
@@ -41,29 +39,35 @@ def generate_financial_analysis(symbol: str, agent):
     return response.content
 
 
+# Sidebar for parameters
+st.sidebar.header("Analysis Parameters")
+
+# Add a picture to the sidebar.
+sidebar_image = Image.open("financial_analysis_sidebar.png")  # replace with your image.
+st.sidebar.image(sidebar_image, use_column_width=True)
+
+stock_symbol = st.sidebar.text_input(
+    "Enter Stock Symbol",
+    placeholder="e.g., TCS.NS",
+    key="stock_input",
+)
+
+analyze_button = st.sidebar.button("Generate Analysis", type="primary")
+
 # Main UI
 st.markdown(
     "<h1 class='main-header'>Financial Analysis Assistant 📈</h1>",
     unsafe_allow_html=True,
 )
 
+main_image = Image.open("financial_analysis_main.png")  # replace with your image
+st.image(main_image, use_column_width=True)
+
 st.markdown(
     """
     This tool provides detailed financial analysis for publicly traded companies.
 """
 )
-
-# Stock symbol input
-with st.container():
-    col1, col2 = st.columns([3, 1])
-    with col1:
-        stock_symbol = st.text_input(
-            "Enter Stock Symbol (e.g., TCS.NS for Tata Consultancy Services, MSFT for Microsoft)",
-            placeholder="e.g., TCS.NS",
-            key="stock_input",
-        )
-    with col2:
-        analyze_button = st.button("Analyze", type="primary")
 
 # Analysis section
 if analyze_button and stock_symbol:
@@ -73,9 +77,10 @@ if analyze_button and stock_symbol:
 
         st.success("Analysis completed!")
 
-        # Display analysis in an expandable container
-        with st.expander("View Detailed Analysis", expanded=True):
-            st.markdown(analysis)
+        # Display analysis in a full-width container
+        with st.container():
+            st.markdown("## Detailed Analysis", unsafe_allow_html=True)
+            st.markdown(analysis, unsafe_allow_html=True)
 
         st.session_state.analysis_generated = True
 
