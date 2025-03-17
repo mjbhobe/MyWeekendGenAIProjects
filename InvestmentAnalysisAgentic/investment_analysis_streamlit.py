@@ -33,7 +33,7 @@ if 'analysis_generated' not in st.session_state:
     st.session_state.analysis_generated = False
 
 def generate_investment_analysis(symbol: str, agent):
-    prompt = f"Generate comprehensive investment analysis for {symbol}"
+    prompt = f"Generate investment analysis for {symbol}"
     # return agent.print_response(prompt, stream=True)
     response: RunResponse = agent.run(prompt, markdown=True)
     return response.content
@@ -42,9 +42,8 @@ def generate_investment_analysis(symbol: str, agent):
 st.markdown("<h1 class='main-header'>StockSage - Investment Analyzer 📈</h1>", unsafe_allow_html=True)
 
 st.markdown("""
-    This tool provides detailed investment analysis for publicly traded companies and comes up with an overall
+    This tool provides investment analysis for publicly traded companies and comes up with an overall
     recommendation on the long term investment potential.
-    Enter a stock symbol (e.g., TCS.NS for Tata Consultancy Services) to begin. **NOTE:** Symbol should be the same as used by Yahoo! Finance website.
 """)
 
 # Stock symbol input
@@ -52,7 +51,7 @@ with st.container():
     col1, col2 = st.columns([3, 1])
     with col1:
         stock_symbol = st.text_input(
-            "Enter Stock Symbol",
+            "Enter Stock Symbol to begin (should be same as used on Yahoo! Finance website):",
             placeholder="e.g., TCS.NS",
             key="stock_input"
         )
