@@ -31,14 +31,16 @@ if video_url:
             with st.spinner("Generating transcript & summary..."):
                 transcript = get_transcript(video_id)
                 summary = get_summary(transcript)
-            st.write(transcript)
+            
             # transcript = YouTubeTranscriptApi.get_transcript(video_id)
             # full_transcript = " ".join(
             #     [entry["text"] for entry in transcript]
             # )  # Combine into one string
             # st.write("Transcript:")
             # st.write(full_transcript)  # Display the transcript in Streamlit
-
+            #st.markdown("---")
+            with st.expander("Video Transcript", expanded=False):
+                st.write(transcript)
             st.markdown("---")
             st.markdown(
                 f"<h2 style='color=skyblue;'>Summary</h2>",
